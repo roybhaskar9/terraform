@@ -51,6 +51,8 @@ resource "aws_instance" "web"{
             "sudo rm -f /etc/tomcat7/tomcat-users.xml",
             "sudo wget https://raw.githubusercontent.com/roybhaskar9/terraform/master/tomcat-users.xml -P /etc/tomcat7/",
             "sudo service tomcat7 restart"
+	    "wget https://github.com/roybhaskar9/terraform/raw/master/sample.war -O /tmp/sample.war"
+            "wget --http-user=admin --http-password=admin 'http://localhost:8080/manager/text/deploy?war=file:/tmp/sample.war&path=/sampleapp' -O -"	
         ]
      }
 }
