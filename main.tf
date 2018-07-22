@@ -33,7 +33,7 @@ resource "aws_instance" "web"{
  
     connection={
         user="ubuntu"
-        key_file="${var.key_path}"
+        private_key = "${file("s9key.pem")}"
     }
     instance_type="t2.medium"
     ami="${lookup(var.aws_amis, var.aws_region)}"
