@@ -46,7 +46,9 @@ resource "aws_instance" "web"{
  
         inline=[
 	    "ping -c 10 8.8.8.8",
-            "sudo apt-get -y update",
+            "sudo apt-get update",
+            "sudo apt-get -y install tomcat7 tomcat7-admin",
+	    "sudo apt-get update",
             "sudo apt-get -y install tomcat7 tomcat7-admin",
             "sudo rm -f /etc/tomcat7/tomcat-users.xml",
             "sudo wget https://raw.githubusercontent.com/roybhaskar9/terraform/master/tomcat-users.xml -P /etc/tomcat7/",
